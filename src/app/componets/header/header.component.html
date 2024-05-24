@@ -1,0 +1,406 @@
+<nav style="background-color: rgba(25, 131, 253, 0.75);"
+  class="sticky z-20 top-0 left-0 w-full  border-gray-200  ">
+  <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+    <a routerLink="home" class="flex items-center">
+      <img src="assets/logo2.png" style="height: 75px; width: 75px;" class="h-6 mr-3 sm:h-9" alt="mano">
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-black">LEGENDS</span>
+    </a>
+
+
+    <div class="flex items-center lg:order-2">
+      <!-- <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon> -->
+      <div class="hidden mt-2 mr-4 sm:inline-block">
+      </div>
+
+      <!-- <button (click)="togglesearch()" class="text-gray-500 hover:text-white mr-4 focus:outline-none">
+        <img src="assets/search.svg" class="h-4 mr-3 sm:h-6" alt="search">
+      </button> -->
+
+      <div class="input-wrapper">
+        <button class="icon">
+          <img src="assets/search.svg" class="h-4 mr-3 sm:h-6" alt="search">
+        </button>
+        <input type="text" name="text" class="input" placeholder="search.." />
+      </div>
+      
+
+
+      <button class="text-gray-500 hover:text-white mr-4 focus:outline-none">
+        <img src="assets/user-solid.svg" class="h-4 mr-3 sm:h-6" alt="user">
+
+      </button>
+
+      <button class="text-gray-500 hover:text-white focus:outline-none relative">
+        <a routerLink="/shopping-cart" >
+          <span class="absolute w-5 h-5 rounded-full bg-white right-0 -top-2 text-center text-sm text-black font-bold">
+            {{ productCount }}
+          </span>
+        <img src="assets/cart-shopping-solid.svg" class="h-4 mr-3 sm:h-6" alt="sc">
+      </a>
+      </button>
+
+      <button (click)="toggleMenu()" class="text-gray-500 hover:text-white mr-4 focus:outline-none md:hidden">
+        <img src="assets/burger-menu.svg" class="h-6 w-6" alt="">
+      </button>
+    </div>
+
+    <div  class=" items-center justify-between w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
+
+      <ul *ngIf="isMenuOpen" class="flex m-auto text-center flex-col md:flex md:items-center z-10 lg:flex-row lg:space-x-8 
+              lg:mt-1 md:z-auto md:static   w-fit left-0 md:w-auto 
+              md:py-4 py-1 md:pl-0 pl-7 md:opacity-100 
+               transition-all ease-in duration-500">
+
+        <li>
+
+          <a routerLink="home" style="color: black; font-weight: bold;"
+            class="block py-2 pl-3 pr-4 text-white bg-yellow-700 rounded lg:bg-transparent lg:text-white lg:p-0 dark:text-gray-500"
+            aria-current="page">HOME</a>
+        </li>
+       
+        <button (mouseenter)="showClubsDropdown()" 
+        
+        id="multiLevelDropdownButton" 
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+        type="button">
+  CLUBS
+  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg>
+</button>
+
+  
+  <!-- Dropdown menu -->
+  <div id="multi-dropdown" *ngIf="isClubsDropdownOpen" class="z-10 absolute top-16  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
+        <li class="relative" (mouseenter)="toggleDropdown('liga')" (mouseleave)="hideDropdown('liga')">
+          <button (click)="toggleDropdown('liga')" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            La Liga
+            <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+          </button>
+          <div *ngIf="isDropdownOpen.liga" style="position: absolute;left: 180px;top: 5px" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">REAL MADRID</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">FC BARCELONA</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ATHLETICO MADRID</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">VALENCIA</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li class="relative" (mouseenter)="toggleDropdown('serieA')" (mouseleave)="hideDropdown('serieA')">            <button (click)="toggleDropdown('serieA')" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Serie A
+              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              </svg>
+            </button>
+            <div *ngIf="isDropdownOpen.serieA" style="position: absolute;left: 180px;top: 5px;" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AC MILAN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">INTER MILAN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">JUVENTUS</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">NAPOLI</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AS ROMA</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li class="relative" (mouseenter)="toggleDropdown('premierLeague')" (mouseleave)="hideDropdown('premierLeague')">            <button (click)="toggleDropdown('premierLeague')" 
+                class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Premier Ligue
+              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              </svg>
+            </button>
+            <div *ngIf="isDropdownOpen.premierLeague" style="position: absolute;left: 180px;top: 5px;" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">MANCHESTER UNITED</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">MANCHESTER CITY</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LIVERPOOL</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ARSENAL</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">MANCHESTER CITY</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">NEWCASTLE UNITED</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li class="relative" (mouseenter)="toggleDropdown('bundesliga')" (mouseleave)="hideDropdown('bundesliga')">            <button (click)="toggleDropdown('bundesliga')" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Bundesliga
+              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              </svg>
+            </button>
+            <div *ngIf="isDropdownOpen.bundesliga" style="position: absolute;left: 180px;top: 5px;" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">BAYERN MUNCHIN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">BORUSSIA DORTMUND</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">BAYER LEVERKUSEN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">RB LEIPZIG</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li class="relative" (mouseenter)="toggleDropdown('ligue1')" (mouseleave)="hideDropdown('ligue1')">            <button (click)="toggleDropdown('ligue1')" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Ligue 1
+              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              </svg>
+            </button>
+            <div *ngIf="isDropdownOpen.ligue1" style="position: absolute;left: 180px;top: 5px;" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">OLYMPIQUE DE MARSEILLE</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">OLYMPIQUE LYONNAIS</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PARIS SAINT-GERMAIN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AS SAINT-ETIENNE</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li>
+          <li class="relative" (mouseenter)="toggleDropdown('others')" (mouseleave)="hideDropdown('others')">
+            <button (click)="toggleDropdown('others')" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              others
+              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              </svg>
+            </button>
+            <div *ngIf="isDropdownOpen.others" style="position: absolute;left: 180px;top: 5px;" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AJAX AMSTERDAM</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PSV EINDHOVEN</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">BOCA JUNIOR</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ATLETICO RIVER PLATE</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">FAR</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">RCA</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">WYDAD</a>
+                </li>
+              </ul>
+          </div>
+        </li>
+      </ul>
+  </div>
+  
+
+        <div class="relative inline-block text-left">
+          <div>
+            <button (mouseenter)="toggleDropdown2()" (mouseleave)="toggleDropdown2()" href="#"
+              style="color: black; font-weight: bold;"
+              class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+              INTERNATIONAL
+            </button>
+          </div>
+          <div *ngIf="dropdown2"
+            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <div class="py-1" role="none">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-0">Argentina</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-1">Brazil</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">England</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">France</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">Italy</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">Germany</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">Morocco</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">Netherlands</a>
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                id="menu-item-2">Spain</a>
+            </div>
+          </div>
+        </div>
+        <li>
+          <a href="#" style="color: black; font-weight: bold;"
+            class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">THE
+            LEGENDS</a>
+        </li>
+        
+      </ul>
+    
+
+    </div>
+
+    <ul class="lg:hidden hidden flex-col mt-3 font-medium lg:flex-row lg:space-x-8 lg:mt-4">
+      <li>
+
+        <a href="#" style="color: black; font-weight: bold;"
+          class="block py-2 pl-3 pr-4 text-white bg-yellow-700 rounded lg:bg-transparent lg:text-white lg:p-0 dark:text-gray-500"
+          aria-current="page">HOME</a>
+      </li>
+      <div class="relative inline-block text-left">
+        <div class="flex">
+          <button (click)="dropdown =!dropdown" href="#" style="color: black; font-weight: bold;"
+            class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+            CLUBS
+          </button>
+          <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div *ngIf="dropdown"
+          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" role="none">
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">La
+              Liga</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-1">Serie A</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Premier Ligue</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Bundesliga</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Ligue 1</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative inline-block text-left">
+        <div>
+          <button (click)="dropdown2 =!dropdown2" href="#" style="color: black; font-weight: bold;"
+            class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+            INTERNATIONAL
+            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div *ngIf="dropdown2"
+          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-0">Argentina</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-1">Brazil</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">England</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">France</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Italy</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Germany</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Morocco</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Netherlands</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+              id="menu-item-2">Spain</a>
+          </div>
+        </div>
+      </div>
+      <li>
+        <a href="#" style="color: black; font-weight: bold;"
+          class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">THE
+          LEGENDS</a>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
+
+<!-- <div class="relative inline-block text-left">
+  <div class="flex">
+    <button (mouseenter)="toggleDropdown()" (mouseleave)="toggleDropdown()" href="#"
+      style="color: black; font-weight: bold;"
+      class="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:underline lg:hover:bg-transparent lg:border-0 lg:hover:text-white lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+      CLUBS
+    </button>
+
+  </div>
+  
+  <div *ngIf="dropdown"
+    class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div class="py-1" role="none">
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        id="menu-item-0">La Liga</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        id="menu-item-1">Serie A</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        id="menu-item-2">Premier Ligue</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        id="menu-item-2">Bundesliga</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        id="menu-item-2">Ligue 1</a>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
