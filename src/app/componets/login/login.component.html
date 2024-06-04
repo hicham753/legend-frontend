@@ -1,0 +1,46 @@
+<div class="container col-md-6 offset-md-3 mt-5 flex justify-center">
+    <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 container col-md-6 offset-md-3 mt-5">
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+      <div class="card">
+        <h4 class="card-header mb-5 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h4>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+              <input type="text" formControlName="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
+              <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                <div *ngIf="f['username'].errors['required']">Username is required</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+              <input type="password" formControlName="password" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+              <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+                </div>
+                <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+              </div>
+              <a href="#" class="ms-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
+            </div>
+            <div>
+              <button type="submit" [disabled]="loading" class="mt-5 mb-5 w-full h-fit text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                Login to your account
+              </button>
+              <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+                Not registered? <a routerLink="/sign-up" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

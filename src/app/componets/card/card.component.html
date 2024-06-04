@@ -1,0 +1,53 @@
+<div class="bg-gray-100 p-8">
+    <div class="max-w-lg mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
+      <div class="bg-gradient-to-r from-black to-indigo-500 p-6">
+        <h2 class="text-white text-2xl font-thin">Payment Card</h2>
+      </div>
+      <div class="p-6">
+        <table class="w-full mb-6 text-left border-collapse">
+          <thead>
+          <tr class="text-gray-700 border-b-2 border-gray-200">
+            <th class="p-3">Test Card</th>
+            <th class="p-3">Type</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="odd:bg-gray-100 even:bg-white">
+            <td class="p-3 border-t">4242 4242 4242 4242</td>
+            <td class="p-3 border-t">Visa</td>
+          </tr>
+          <tr class="odd:bg-gray-100 even:bg-white">
+            <td class="p-3 border-t">5555 5555 5555 4444</td>
+            <td class="p-3 border-t">Mastercard</td>
+          </tr>
+          <tr class="odd:bg-gray-100 even:bg-white">
+            <td class="p-3 border-t">3782 822463 10005</td>
+            <td class="p-3 border-t">American Express</td>
+          </tr>
+          <tr class="odd:bg-gray-100 even:bg-white">
+            <td class="p-3 border-t">6011 1111 1111 1117</td>
+            <td class="p-3 border-t">Discover</td>
+          </tr>
+          </tbody>
+        </table>
+        <div id="card-element" class="p-4 border border-gray-300 rounded mb-4">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <small class="text-red-500 block mb-4">
+          {{cardError}}
+        </small>
+        <button class="w-full bg-black hover:bg-blue-700 text-white font-bold py-3 rounded transition duration-300" (click)="getToken()">Submit</button>
+      </div>
+    </div>
+  
+    <div *ngIf="charge" class="max-w-lg mx-auto mt-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md" role="alert">
+      <strong class="font-bold">Successfully Created Charge</strong>
+      <span class="block sm:inline">Charge Id: {{charge.id}}</span>
+    </div>
+  
+    <div *ngIf="chargeError" class="max-w-lg mx-auto mt-6 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md" role="alert">
+      <strong class="font-bold">A Stripe Error Occurred</strong>
+      <span class="block sm:inline">{{chargeError.error}}</span>
+    </div>
+  </div>
+  

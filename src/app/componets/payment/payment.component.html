@@ -1,0 +1,50 @@
+
+
+<div class="bg-gray-100 p-8">
+    <div class="max-w-lg mx-auto bg-white shadow-xl rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+      <div class="bg-gradient-to-r from-black to-indigo-500 p-6">
+        <h2 class="text-white text-2xl font-light tracking-wide">Payment Card</h2>
+      </div>
+      <div class="p-6">
+        <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label for="name" class="block text-lg font-medium text-gray-800">Name</label>
+            <input id="name" formControlName="name" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div class="mb-4">
+            <label for="cardNumber" class="block text-lg font-medium text-gray-800">Card Number</label>
+            <input id="cardNumber" formControlName="cardNumber" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div class="mb-4">
+            <label for="expMonth" class="block text-lg font-medium text-gray-800">Expiry Month</label>
+            <input id="expMonth" formControlName="expMonth" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div class="mb-4">
+            <label for="expYear" class="block text-lg font-medium text-gray-800">Expiry Year</label>
+            <input id="expYear" formControlName="expYear" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div class="mb-4">
+            <label for="cvc" class="block text-lg font-medium text-gray-800">CVC</label>
+            <input id="cvc" formControlName="cvc" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div class="mb-4">
+            <label for="amount" class="block text-lg font-medium text-gray-800">Amount</label>
+            <input id="amount" formControlName="amount" type="number" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400">
+          </div>
+          <div id="card-element" class="p-4 border border-gray-300 rounded mb-4 shadow-sm"></div>
+          <small class="text-red-500 block mb-4">{{ cardError }}</small>
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded shadow-md transition duration-300 transform hover:scale-105">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="charge" class="max-w-lg mx-auto mt-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md transition-transform duration-300 ease-in-out transform hover:-translate-y-1" role="alert">
+      <strong class="font-bold">Successfully Created Charge</strong>
+      <span class="block sm:inline">Charge Id: {{ charge.id }}</span>
+    </div>
+  
+    <div *ngIf="chargeError" class="max-w-lg mx-auto mt-6 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md transition-transform duration-300 ease-in-out transform hover:-translate-y-1" role="alert">
+      <strong class="font-bold">A Stripe Error Occurred</strong>
+      <span class="block sm:inline">{{ chargeError }}</span>
+    </div>
+  </div>

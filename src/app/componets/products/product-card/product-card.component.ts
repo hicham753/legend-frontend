@@ -1,34 +1,32 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { products } from '../products.model';
+import { Product } from '../products.model';
 import { ProductsService } from '../../products.service';
-import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from '../../shopping-cart.service';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent   {
-
-  @Input() product! : products;
-
+export class ProductCardComponent implements OnInit {
+  products: Product[] = [];
+  @Input() product!: Product;
   private popupSubscription: Subscription | undefined;
 
+  constructor(
+    private shoppingCartService: ShoppingCartService, 
+    private productService: ProductsService
+  ) {}
 
-  constructor(private shoppingCartService: ShoppingCartService){
-
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+    });
   }
 
-
-  
-  addToCart(){
-    console.log(this.product);
-    
-    this.shoppingCartService.addItem(this.product)
+  addToCart(product: Product) {
+    console.log(product);
+    this.shoppingCartService.addItem(product);
   }
-
-  
 }

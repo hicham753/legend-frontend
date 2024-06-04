@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { products } from './products/products.model';
+import { Product } from './products/products.model';
 import { BehaviorSubject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
@@ -8,13 +8,13 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  cartItem: products[] = []; 
+  cartItem: Product[] = []; 
   numOfItem = new BehaviorSubject<number>(0);
   
 
   constructor(private toastr: ToastrService) { }
 
-  addItem(product: products) {
+  addItem(product: Product) {
     const exist = this.cartItem.find((item) => item.id === product.id);
 
     if (exist) {

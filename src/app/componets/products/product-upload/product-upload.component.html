@@ -1,0 +1,47 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="w-11/12 max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg transition-transform duration-500 ease-in-out transform hover:-translate-y-1">
+    <h2 class="text-3xl font-bold mb-8 text-center text-indigo-700">Upload Product</h2>
+  
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="name" class="block text-lg font-medium text-gray-800">Name</label>
+        <input id="name" formControlName="name" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter product name">
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="description" class="block text-lg font-medium text-gray-800">Description</label>
+        <input id="description" formControlName="description" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter product description">
+      </div>
+    </div>
+  
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="price" class="block text-lg font-medium text-gray-800">Price</label>
+        <input id="price" formControlName="price" type="number" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter product price">
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="size" class="block text-lg font-medium text-gray-800">Size</label>
+        <input id="size" formControlName="size" type="text" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter product size">
+      </div>
+    </div>
+  
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="image" class="block text-lg font-medium text-gray-800">Image</label>
+        <input id="image" formControlName="image" type="file" (change)="onFileChange($event)" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md">
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="categoryId" class="block text-lg font-medium text-gray-800">Category ID</label>
+        <input id="categoryId" formControlName="categoryId" type="number" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter category ID">
+      </div>
+    </div>
+  
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="subCategoryId" class="block text-lg font-medium text-gray-800">SubCategory ID</label>
+        <input id="subCategoryId" formControlName="subCategoryId" type="number" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md placeholder-gray-400" placeholder="Enter subcategory ID">
+      </div>
+      <div class="w-full px-3">
+        <button type="submit" class="w-full py-3 px-6 mt-8 border border-transparent rounded-lg shadow-md text-md font-medium text-white bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform hover:scale-105 transition-transform duration-300 ease-in-out">Upload Product</button>
+      </div>
+    </div>
+  </form>
+  

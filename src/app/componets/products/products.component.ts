@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { products } from './products.model';
+import { Product } from './products.model';
 import { ProductsService } from '../products.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from '../shopping-cart.service';
@@ -11,19 +11,24 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ProductsComponent {
 
-  selectedProduct!: products
+  products: Product[] = [];
+
+  selectedProduct!: Product;
+
 
   constructor(private productService: ProductsService, private route: ActivatedRoute,
      private shoppingCartService: ShoppingCartService) { }
 
-  ngOnInit(){
-    const id= this.route.snapshot.params['id'];
-    this.selectedProduct = this.productService.getproduct(id) as products;
-
-    if (!this.selectedProduct) {
-      console.error(`Product with id ${id} not found.`);
-  }
-  }
+     ngOnInit() {
+      this.productService.getProducts().subscribe(
+        (products: Product[]) => {
+          this.products = products;
+        },
+        error => {
+          console.error('Error fetching products:', error);
+        }
+      );
+    }
 
   // addToCart(product: products){
   //   console.log(products);
@@ -32,9 +37,9 @@ export class ProductsComponent {
 
   // }
 
-  addToCart() {
-    if (this.selectedProduct) {
-      this.shoppingCartService.addItem(this.selectedProduct);
+  addToCart(product: Product) {
+    if (this.products) {
+      this.shoppingCartService.addItem(product);
     }
   }
   

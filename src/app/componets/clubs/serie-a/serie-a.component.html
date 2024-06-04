@@ -1,0 +1,10 @@
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-4">Serie A</h1>
+  
+    <p class="text-lg mb-8">Tu aimes les ambiances chaudes dans des stades décrépis? T’utilises encore du Pento? Tu parles avec les mains? Alors tu dois être fan du championnat italien. Fais ton choix parmi nos maillots vintage de Serie A.</p>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+    </div>
+  </div>
+  

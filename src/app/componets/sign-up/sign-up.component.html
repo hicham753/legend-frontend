@@ -1,0 +1,44 @@
+<div class="min-w-screen min-h-screen flex items-center justify-center px-4 py-4 ">
+    <div class="bg-white rounded-lg shadow-xl w-full md:max-w-3xl">
+      <div class="md:flex w-full">
+        <div class="hidden md:block w-1/2">
+          <img src="assets/Sing%20up.jpg" alt="Registration Image" class="object-cover w-full h-full rounded-t-lg">
+        </div>
+        <div class="w-full md:w-1/2 p-8">
+          <h1 class="text-3xl font-bold mb-4 text-gray-800">REGISTER</h1>
+          <p class="text-gray-600 mb-8">Enter your information to register</p>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+            <div class="flex flex-col space-y-1">
+              <label for="first_name" class="text-sm font-semibold text-gray-600">First Name</label>
+              <input type="text" id="first_name" formControlName="firstName" class="input border-1 border-gray-200 outline-none focus:border-indigo-500" placeholder="Your first name" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+              <div *ngIf="submitted && f['firstName'].errors" class="text-xs text-red-500">First Name is required</div>
+            </div>
+            <div class="flex flex-col space-y-1">
+              <label for="last_name" class="text-sm font-semibold text-gray-600">Last Name</label>
+              <input type="text" id="last_name" formControlName="lastName" class="input input border-1 border-gray-200 outline-none focus:border-indigo-500" placeholder="Your last name" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+              <div *ngIf="submitted && f['lastName'].errors" class="text-xs text-red-500">Last Name is required</div>
+            </div>
+            <div class="flex flex-col space-y-1">
+              <label for="username" class="text-sm font-semibold text-gray-600">Username</label>
+              <input type="text" id="username" formControlName="username" class="input border-1 border-gray-200 outline-none focus:border-indigo-500" placeholder="Your username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+              <div *ngIf="submitted && f['username'].errors" class="text-xs text-red-500">Username is required</div>
+            </div>
+            <div class="flex flex-col space-y-1">
+              <label for="password" class="text-sm font-semibold text-gray-600">Password</label>
+              <input type="password" id="password" formControlName="password" class="input input border-1 border-gray-200 outline-none focus:border-indigo-500" placeholder="••••••••" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+              <div *ngIf="submitted && f['password'].errors" class="text-xs text-red-500">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+              </div>
+            </div>
+            <button [disabled]="loading" type="submit" class="bg-blue-500 hover:bg-blue-800 bg-primary-600 hover:bg-primary-700 text-white btn-primary w-full py-2.5 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <span *ngIf="loading" class="animate-spin mr-1"><i class="fas fa-spinner"></i></span>
+              REGISTER NOW
+            </button>
+            <p class="text-sm text-gray-600 mt-3">Already have an account? <a routerLink="../login" class="text-blue-500 hover:underline">Login here</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
